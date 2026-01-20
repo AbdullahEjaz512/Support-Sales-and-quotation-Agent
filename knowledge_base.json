@@ -1,0 +1,128 @@
+[
+  {
+    "category": "Company Overview",
+    "question": "What is AztroSys?",
+    "answer": "AztroSys is a leading technology provider in Pakistan, established in 2010 (originally as Xtreme IT Services). We specialize in systems integration, professional services, consulting, and outsourcing.",
+    "keywords": ["about", "company", "who are you", "history", "founded"]
+  },
+  {
+    "category": "Company Overview",
+    "question": "Who is the CEO of AztroSys?",
+    "answer": "Our Chief Executive Officer is Ammara Khan. The leadership team also includes Srafia Shaheen (Director of Business Development) and Muhammad Awais Gul (Board of Director, I.T).",
+    "keywords": ["ceo", "owner", "founder", "director", "management", "leadership"]
+  },
+  {
+    "category": "Company Overview",
+    "question": "Why should I choose AztroSys?",
+    "answer": "We have served over 5,000 clients across 35 industries globally. We stand out due to our tailored solutions, extensive expertise in cybersecurity and digital transformation, and our commitment to R&D and innovation.",
+    "keywords": ["why choose us", "benefits", "experience", "clients"]
+  },
+  {
+    "category": "Company Overview",
+    "question": "What is your track record and experience?",
+    "answer": "We have served over 5,000 clients across 35 industries globally. We have completed 500+ projects with a 100% satisfaction rate and have a team of 50+ experts.",
+    "keywords": ["experience", "stats", "projects", "track record", "history", "numbers"]
+  },
+  {
+    "category": "Clients & Portfolio",
+    "question": "Who are some of your specific clients?",
+    "answer": "We are trusted by leading local businesses including Med-X Pharmacy, The Citi Lab, Pakistan Currency Exchange, Hi-Tech Bikes, and DHL Point.",
+    "keywords": ["clients", "portfolio", "customers", "partners", "who do you work with", "references"]
+  },
+  {
+    "category": "Software Development",
+    "question": "What software development services do you offer?",
+    "answer": "We offer Custom Software Development for web, mobile, and desktop. We also provide Web Development using modern frameworks and Mobile App Development for both native and cross-platform environments.",
+    "keywords": ["software", "development", "coding", "web", "mobile", "app"]
+  },
+  {
+    "category": "Software Services",
+    "question": "Do you offer Data Science or AI services?",
+    "answer": "Yes, we provide Data Science and Analytics services to help you make informed decisions through analytics, visualization, and machine learning.",
+    "keywords": ["data science", "ai", "machine learning", "analytics", "visualization"]
+  },
+  {
+    "category": "Software Services",
+    "question": "Do you offer DevOps services?",
+    "answer": "Yes, we implement DevOps best practices including Continuous Integration and Continuous Deployment (CI/CD) to streamline your development process and speed up delivery.",
+    "keywords": ["devops", "ci/cd", "deployment", "pipeline", "automation"]
+  },
+  {
+    "category": "Software Development",
+    "question": "What programming languages and technologies do you use?",
+    "answer": "Our team is skilled in Python (Data Science/Web), JavaScript/TypeScript (React, Angular), Go (Cloud/Microservices), Rust (Systems), and Kotlin (Android). We also work with Blockchain, IoT, and AR/VR technologies.",
+    "keywords": ["stack", "technology", "language", "python", "react", "angular", "rust", "go", "kotlin"]
+  },
+  {
+    "category": "Cybersecurity",
+    "question": "What cybersecurity services do you provide?",
+    "answer": "We offer comprehensive security solutions including Vulnerability Assessments, Penetration Testing, Network Security (Firewalls/IDS), Endpoint Protection (EDR), and Data Encryption. We also handle Incident Response and Security Awareness Training.",
+    "keywords": ["security", "cybersecurity", "hacking", "audit", "firewall", "protection"]
+  },
+  {
+    "category": "Cybersecurity",
+    "question": "Do you offer Zero Trust security?",
+    "answer": "Yes, we implement Zero Trust Architecture, which involves strict verification for every user and device to minimize risk.",
+    "keywords": ["zero trust", "architecture", "compliance"]
+  },
+  {
+    "category": "Infrastructure & Data Center",
+    "question": "Can you help set up a Data Center?",
+    "answer": "Yes, we assist in planning, designing, and implementing data center infrastructure. This includes Power Systems (UPS, Generators), Cooling Systems, Fire Suppression (FM200, CO2), and Passive Security like surveillance and access control.",
+    "keywords": ["data center", "infrastructure", "power", "cooling", "server room"]
+  },
+  {
+    "category": "Infrastructure & Data Center",
+    "question": "What networking solutions do you offer?",
+    "answer": "We handle Passive Networking Infrastructure, including Fiber Optics and UTP cabling. We also provide Wireless Solutions including Wi-Fi, Microwave, WiMAX, VHF, and UHF.",
+    "keywords": ["networking", "cabling", "fiber", "wifi", "wireless", "routing", "switching"]
+  },
+  {
+    "category": "Hardware Support",
+    "question": "Do you provide IT hardware and repairs?",
+    "answer": "Yes, we supply a vast range of IT hardware. We provide pre-sales assistance to choose the right equipment, handle delivery, and offer after-sales support including spare parts and repair services.",
+    "keywords": ["hardware", "equipment", "repair", "spare parts", "supply", "maintenance"]
+  },
+  {
+    "category": "Business Solutions",
+    "question": "What are your Cloud Computing services?",
+    "answer": "We provide scalable Cloud Solutions including cloud migration, multi-cloud management, and the development of cloud-native applications to optimize your operations.",
+    "keywords": ["cloud", "azure", "migration", "hosting"]
+  },
+  {
+    "category": "Business Solutions",
+    "question": "Do you offer Printing Solutions?",
+    "answer": "Yes, we offer Managed Print Services (MPS), Digital Printing, and Large Format Printing tailored to reduce costs and increase efficiency.",
+    "keywords": ["print", "printing", "printer", "managed print"]
+  },
+  {
+    "category": "Business Solutions",
+    "question": "What is your Outsourcing service?",
+    "answer": "Our outsourcing services allow you to reduce operational costs by hiring our skilled professionals for Software Development, IT Support, Cloud Services, and Data Management.",
+    "keywords": ["outsourcing", "hiring", "staff", "remote team"]
+  },
+  {
+    "category": "Company History",
+    "question": "How did you handle the COVID-19 pandemic?",
+    "answer": "In 2020, we developed remote work solutions to ensure business continuity, helping over 200 organizations transition to remote operations seamlessly.",
+    "keywords": ["pandemic", "covid", "remote work", "history", "2020"]
+  },
+  {
+    "category": "Contact Information",
+    "question": "What is your phone number?",
+    "answer": "You can reach us at +92-308-5608886, +92-308-5494369, or our landline +92-51-5922191.",
+    "keywords": ["phone", "contact", "call", "mobile", "number"]
+  },
+  {
+    "category": "Contact Information",
+    "question": "What is your email address?",
+    "answer": "For general inquiries, email info@aztrosys.com. For project-specific inquiries, use project@aztrosys.com. You can reach the CEO at ceo@aztrosys.com.",
+    "keywords": ["email", "mail", "contact"]
+  },
+  {
+    "category": "Contact Information",
+    "question": "Where is your office located?",
+    "answer": "Our Head Office is at Office #5, 1st Floor, opposite High Courts, G-10 Markaz, Islamabad. Our Meeting Office is at Office No.2, 1st Floor, MB City Mall Plaza, Near Bank Al Falah, I-8 Markaz, Islamabad.",
+    "keywords": ["meeting office", "address", "location", "visit", "i-8 markaz", "head office", "g-10"]
+  }
+]
