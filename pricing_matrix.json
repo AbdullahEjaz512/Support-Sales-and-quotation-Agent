@@ -1,5 +1,6 @@
 {
   "currency": "USD",
+  "max_discount_percent": 0.15,  
   "disclaimer": "This is an automated estimate. Final pricing requires a technical meeting.",
   "services": [
     {
@@ -7,35 +8,32 @@
       "name": "Landing Page Website",
       "base_price": 300,
       "description": "Single page promotional site.",
-      "avg_days": 5
+      "avg_days": 5,
+      "keywords": ["landing page", "one page", "promotional site"]
     },
     {
       "id": "web_business",
       "name": "Standard Business Website",
       "base_price": 800,
       "description": "5-10 pages, CMS integration, Contact forms.",
-      "avg_days": 14
+      "avg_days": 14,
+      "keywords": ["business website", "corporate website", "company site", "cms"]
     },
     {
       "id": "web_ecommerce",
       "name": "E-Commerce Store",
       "base_price": 2000,
-      "description": "Online store with payment gateway, cart, and product management.",
-      "avg_days": 30
+      "description": "Online store with payment gateway.",
+      "avg_days": 30,
+      "keywords": ["ecommerce", "e-commerce", "online store", "selling", "shop"]
     },
     {
       "id": "app_mvp",
       "name": "Mobile App MVP",
       "base_price": 5000,
       "description": "Basic functional app for iOS or Android.",
-      "avg_days": 45
-    },
-    {
-      "id": "consulting_hourly",
-      "name": "Technical Consultation",
-      "base_price": 50,
-      "description": "Hourly rate for senior engineers.",
-      "avg_days": 1
+      "avg_days": 45,
+      "keywords": ["mobile app", "android", "ios", "iphone app", "application"]
     }
   ]
 }

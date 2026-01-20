@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import google.generativeai as genai
 from dotenv import load_dotenv
 
@@ -77,9 +78,14 @@ def calculate_quote(english_query):
     total_days = 0
 
     services_list = pricing_data.get("services", [])
+    
     for service in services_list:
-        keywords = service['id'].split('_') 
-        if any(k in english_query for k in keywords):
+        # Check specific keywords defined in the JSON
+        # We use 'get' in case you forgot to add keywords to one entry
+        triggers = service.get('keywords', [])
+        
+        # If ANY of the specific triggers are found in the query
+        if any(trigger in english_query for trigger in triggers):
             found_services.append(service)
             total_price += service['base_price']
             total_days = max(total_days, service['avg_days'])
@@ -97,6 +103,36 @@ def calculate_quote(english_query):
     )
     return response
 
+def evaluate_offer(user_offer_str, ai_estimate):
+    """
+    Parses user's offer (e.g., "I can pay 1500") and compares with AI price.
+    Returns: 'accept', 'tentative', or 'reject'
+    """
+    try:
+        # 1. Extract number from string (Simple regex)
+        numbers = re.findall(r'\d+', user_offer_str)
+        if not numbers:
+            return "unknown"
+        
+        user_price = float(numbers[0])
+        
+        # 2. Calculate Deviation
+        discount_needed = 1 - (user_price / ai_estimate)
+        max_allowed = pricing_data.get("max_discount_percent", 0.10) # Default 10%
+
+        # 3. Decision Logic
+        if user_price >= ai_estimate:
+            return "accept_immediately" # User offered MORE or EQUAL
+        
+        elif discount_needed <= max_allowed:
+            return "tentative_approval" # Within 15% range -> Send to Human for signoff
+            
+        else:
+            return "reject_lowball" # Too low (e.g., 50% off) -> Polite decline
+
+    except Exception:
+        return "error"
+    
 def finalize_response(english_response, target_language):
     """
     Translates the final answer back to the user's language.
