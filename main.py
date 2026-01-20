@@ -1,42 +1,73 @@
-from fastapi import FastAPI, HTTPException
+import logging
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware # IMPORT CORS
 from models import ChatInput, ChatOutput
-from rag_engine import find_best_match, calculate_quote
+from rag_engine import translate_and_normalize, find_best_match, calculate_quote, finalize_response
+
+# 1. Setup Logging (So you can see what is happening in the terminal)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = FastAPI(title="AztroSys AI Agent")
 
+# 2. Add CORS Middleware (CRITICAL for connecting to Node.js/React)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins (change this to specific domains in production)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods (POST, GET, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
+
 @app.post("/chat", response_model=ChatOutput)
 async def chat_endpoint(data: ChatInput):
-    user_msg = data.message.lower()
-    
-    # 1. Check for Pricing/Quotation Intent first
-    if any(word in user_msg for word in ["price", "cost", "quote", "how much", "rate", "estimate"]):
-        quote_response = calculate_quote(user_msg)
-        if quote_response:
-            return ChatOutput(
-                response_text=quote_response,
-                intent="quotation",
-                estimated_price="Calculated",
-                confidence_score=0.9,
-                suggested_actions=["Book a Call", "Download Rate Card"]
-            )
-            
-    # 2. If not pricing, check General Knowledge Base
-    kb_match = find_best_match(user_msg)
-    
-    if kb_match:
-        return ChatOutput(
-            response_text=kb_match['answer'],
-            intent="general_info",
-            confidence_score=0.85,
-            suggested_actions=["Ask about Pricing", "View Portfolio"]
-        )
+    logger.info(f"Received request from user: {data.user_id} on platform: {data.platform}")
 
-    # 3. Fallback (If nothing found)
+    # STEP 1: Normalize Language
+    analysis = translate_and_normalize(data.message)
+    english_msg = analysis.get('english_query', data.message) # Safer .get()
+    user_lang = analysis.get('detected_language', 'English')
+    
+    logger.info(f"Detected Language: {user_lang} | Query: {english_msg}")
+
+    final_text = ""
+    intent = ""
+    confidence = 0.0
+    suggested = []
+
+    # STEP 2: Logic
+    quote_response = calculate_quote(english_msg)
+    
+    if quote_response:
+        final_text = quote_response
+        intent = "quotation"
+        confidence = 0.9
+        suggested = ["Book a Call", "Download Rate Card"]
+        
+    else:
+        kb_match = find_best_match(english_msg)
+        if kb_match:
+            final_text = kb_match['answer']
+            intent = "general_info"
+            confidence = 0.85
+            suggested = ["Ask about Pricing", "View Portfolio"]
+        else:
+            final_text = "I'm not sure about that. Let me connect you with a human expert."
+            intent = "human_handoff"
+            confidence = 0.2
+            suggested = ["Contact Support"]
+
+    # STEP 3: Translate Back
+    translated_text = finalize_response(final_text, user_lang)
+    
+    logger.info(f"Response sent. Intent: {intent}")
+
     return ChatOutput(
-        response_text="I'm not sure about that specific detail. Let me connect you with a human expert at info@aztrosys.com.",
-        intent="human_handoff",
-        confidence_score=0.2,
-        suggested_actions=["Contact Support"]
+        response_text=translated_text,
+        intent=intent,
+        estimated_price="Calculated" if intent == "quotation" else None,
+        confidence_score=confidence,
+        suggested_actions=suggested
     )
 
 if __name__ == "__main__":
